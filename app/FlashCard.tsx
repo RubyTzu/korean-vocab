@@ -13,18 +13,18 @@ export default function FlashCard({ korean, chinese, onCorrect, onWrong }: Props
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <div onClick={() => setFlipped(!flipped)} className="cursor-pointer bg-white rounded-2xl shadow-md p-10 w-64 flex items-center justify-center border border-gray-200 hover:shadow-lg transition">
-        <p className="text-2xl font-bold text-gray-800">{flipped ? chinese : korean}</p>
+    <div className="flex flex-col items-center gap-6">
+      <div onClick={() => setFlipped(!flipped)} className="cursor-pointer bg-taupe-50 p-10 w-80 flex items-center justify-center border border-stone-300 transition">
+        <p className="text-2xl font-bold text-stone-600">{flipped ? chinese : korean}</p>
       </div>
       {flipped && (
-        <div className="flex gap-4">
-            <button 
-            onClick={onCorrect}
-            className="bg-green-400 hover:bg-green-500 text-white px-6 py-2 rounded-xl transition">答對了</button>
-            <button 
-            onClick={onWrong}
-            className="bg-red-400 hover:bg-red-500 text-white px-6 py-2 rounded-xl transition">答錯了</button>
+        <div className="flex justify-between w-full">
+          <button onClick={onWrong} className="bg-stone-400 hover:bg-stone-500 text-white px-6 py-4.5 rounded-full transition">
+            ✕
+          </button>
+          <button onClick={onCorrect} className="bg-stone-600 hover:bg-stone-700 text-white px-6 py-4.5 rounded-full transition">
+            ✓
+          </button>
         </div>
       )}
     </div>

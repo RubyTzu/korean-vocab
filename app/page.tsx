@@ -42,38 +42,32 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col items-center py-16 gap-8">
-      <h1 className="text-3xl font-bold text-gray-800">韓文單字練習</h1>
-      <div className="flex gap-8 text-lg font-semibold">
-        <p className="text-green-500">答對:{correct}</p>
-        <p className="text-red-500">答錯:{wrong}</p>
-        <p className="text-gray-400">
-          {currentIndex}/{queue.length}
+      <h1 className="fixed bottom-10 right-10 text-xl font-bold text-stone-400">한국어 어휘 연습</h1>
+      <div className="flex gap-5 text-md font-semibold text-stone-400">
+        <p>答對: {correct}</p>
+        <p>答錯: {wrong}</p>
+        <p className="">
+          {currentIndex} / {queue.length}
         </p>
       </div>
       {isFinished ? (
-        <div className="flex flex-col items-center gap-4 text-center">
-          <p className="text-2xl font-bold text-gray-700">練習完成!</p>
-          <p className="text-gray-500">
+        <div className="flex flex-col items-center gap-6 text-center">
+          <p className="text-2xl font-bold text-stone-500 py-10">練習完成!</p>
+          <p className="text-stone-400 mb-4">
             答對 {correct} 張，答錯 {wrong} 張
           </p>
           {wrongItems.length > 0 && (
-            <button onClick={handleReviewWrong} className="bg-red-400 hover:bg-red-500 text-white px-8 py-3 rounded-xl transition">
+            <button onClick={handleReviewWrong} className="border-2 text-stone-400 w-60 py-3 rounded-3xl transition hover:bg-stone-200">
               複習答錯的（{wrongItems.length} 張）
             </button>
           )}
-          <button onClick={handleRestart} className="bg-blue-400 hover:bg-blue-500 text-white px-8 py-3 rounded-xl transition">
+          <button onClick={handleRestart} className="border-2 hover:bg-stone-200 text-stone-400 w-60 py-3 rounded-3xl transition">
             從頭再來
           </button>
         </div>
       ) : (
         <FlashCard key={currentIndex} korean={vocab[currentIndex].korean} chinese={vocab[currentIndex].chinese} onCorrect={handleCorrect} onWrong={handleWrong} />
       )}
-
-      {/* <div className="flex flex-col gap-4">
-        {vocab.map((item, index) => (
-          <FlashCard key={index} korean={item.korean} chinese={item.chinese} onCorrect={() => setCorrect(correct + 1)} onWrong={() => setWrong(wrong + 1)} />
-        ))}
-      </div> */}
     </main>
   );
 }
