@@ -11,7 +11,7 @@ type Props = {
 export default function FlashCard({ korean, chinese, onCorrect, onWrong }: Props) {
   const [revealed, setRevealed] = useState(false);
 
-  const mono = { fontFamily: "'DM Mono', monospace" } as React.CSSProperties;
+  const mono = { fontFamily: "'DM Mono', 'Noto Sans TC', sans-serif" } as React.CSSProperties;
   const serif = { fontFamily: "'Noto Serif KR', serif" } as React.CSSProperties;
 
   return (
